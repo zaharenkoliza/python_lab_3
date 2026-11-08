@@ -60,6 +60,8 @@ def main(cfg_path):
     cfg = yaml.safe_load(open(cfg_path))
     out = pathlib.Path(cfg["out_dir"]); out.mkdir(parents=True, exist_ok=True)
     plan = build_plan(cfg)
+    env0 = {"PATH": os.environ["PATH"], "HOME": os.environ["HOME"]}
+    subprocess.run(DC + ["up", "-d", "--wait", "db"], check=True, capture_output=True, env=env0)  # БД должна быть готова
     env_info = {
         "git_sha": git_sha(),
         "host": platform.platform(), "docker": sh("docker", "version", "--format", "{{.Server.Version}}"),
