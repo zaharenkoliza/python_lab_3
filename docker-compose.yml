@@ -1,7 +1,7 @@
 name: asyncbench
 services:
   db:
-    image: postgres:16.4
+    image: postgres:16.4@sha256:e62fbf9d3e2b49816a32c400ed2dba83e3b361e6833e624024309c35d334b412
     environment: {POSTGRES_USER: bench, POSTGRES_PASSWORD: bench, POSTGRES_DB: bench}
     volumes: ["./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro"]
     command: ["postgres", "-c", "max_connections=100", "-c", "shared_buffers=256MB", "-c", "fsync=off"]
