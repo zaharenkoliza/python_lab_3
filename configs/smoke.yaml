@@ -1,0 +1,15 @@
+# Дымовой прогон для CI: проверяет, что стенд собирается и пайплайн проходит целиком
+seed: 1
+warmup_s: 2
+duration_s: 5
+repetitions: 2
+pool_size: 20
+factors:
+  driver: [sync_psycopg2, async_asyncpg, async_psycopg3]
+  workload: [rows]
+  users: [10]
+aa:
+  driver: sync_psycopg2
+  workload: rows
+  users: 10
+out_dir: results/smoke

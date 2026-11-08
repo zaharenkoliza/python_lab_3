@@ -1,0 +1,15 @@
+# Полный план: 3 драйвера x 2 нагрузки x 3 уровня конкурентности = 18 конфигураций (+ A/A)
+seed: 20261108
+warmup_s: 15
+duration_s: 60
+repetitions: 10
+pool_size: 20
+factors:
+  driver: [sync_psycopg2, async_asyncpg, async_psycopg3]
+  workload: [rows, slow]
+  users: [10, 50, 200]
+aa:
+  driver: sync_psycopg2
+  workload: rows
+  users: 50
+out_dir: results/raw

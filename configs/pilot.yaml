@@ -1,0 +1,15 @@
+# Пилот: проверка работоспособности стенда и A/A-теста (укороченные параметры)
+seed: 20261108
+warmup_s: 5
+duration_s: 15
+repetitions: 4
+pool_size: 20
+factors:
+  driver: [sync_psycopg2, async_asyncpg, async_psycopg3]
+  workload: [rows, slow]
+  users: [50]
+aa:   # A/A: одна и та же конфигурация под двумя метками
+  driver: sync_psycopg2
+  workload: rows
+  users: 50
+out_dir: results/pilot
