@@ -22,3 +22,10 @@ make down       # остановить стенд
 для `docker compose` задайте `COMPOSE="docker compose"`.
 
 `make env` печатает параметры машины и Docker (таблица для раздела 6.3 отчёта).
+
+## Быстрый запуск на чистой ВМ (Ubuntu/Debian)
+```bash
+git clone https://github.com/zaharenkoliza/python_lab_3 && cd python_lab_3
+bash scripts/vm_run.sh
+```
+Скрипт ставит зависимости, собирает стенд, сохраняет параметры машины в `docs/environment.md`, запускает пилот и выводит `docker ps` и итоговые таблицы.
