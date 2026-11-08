@@ -6,6 +6,8 @@
 """
 import hashlib, os, itertools, json, random, subprocess, sys, threading, time, datetime, pathlib, platform
 import yaml
+sys.path.insert(0, os.path.dirname(__file__))
+import collect_env
 
 DC = os.environ.get("COMPOSE", "docker-compose").split()  # в CI: COMPOSE="docker compose"
 
@@ -66,6 +68,7 @@ def main(cfg_path):
         "git_sha": git_sha(),
         "host": platform.platform(), "docker": sh("docker", "version", "--format", "{{.Server.Version}}"),
         "app_image": sh("docker", "image", "inspect", "asyncbench-app:1", "--format", "{{.Id}}"),
+        "machine": collect_env.info(),
         "db_image": "postgres:16.4",
         "init_sql_sha256": hashlib.sha256(open("db/init.sql", "rb").read()).hexdigest(),
     }

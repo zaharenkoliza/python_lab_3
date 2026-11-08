@@ -20,3 +20,5 @@ make down       # остановить стенд
 Результаты: `results/<pilot|raw>/` (`runs.csv`, `summary.csv`, сырые CSV и манифесты прогонов).
 Параметры эксперимента — в `configs/*.yaml`. На macOS команда compose — `docker-compose`;
 для `docker compose` задайте `COMPOSE="docker compose"`.
+
+`make env` печатает параметры машины и Docker (таблица для раздела 6.3 отчёта).
